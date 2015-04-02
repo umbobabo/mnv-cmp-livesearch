@@ -1,0 +1,28 @@
+{
+  "name": "livesearch",
+  "version": "0.1.0",
+  "homepage": "https://github.com/umbobabo/mnv-livesearch",
+  "authors": [
+    "Umberto Babini <umbertobabini@economist.com>"
+  ],
+  "description": "Provide a pure JS livesearch field",
+  "main": [
+  	"./dist/css/style.css",
+  	"./dist/js/livesearch.min.js",
+  	".dist/js/livesearch.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+  	"css/",
+  	"data/",
+  	"js/",
+  	"node_modules/",
+  	"partials/",
+  	"Gruntfile.js",
+  	"package.json",
+  	"config.json",
+	"/sites",
+  	"/tmp",
+  	"bower.json"
+  ]
+}
