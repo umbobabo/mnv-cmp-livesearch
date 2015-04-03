@@ -16,16 +16,17 @@
   	"css/",
   	"data/",
   	"js/",
+    "minerva-ws/",
   	"node_modules/",
   	"partials/",
-  	"Gruntfile.js",
-  	"package.json",
+    "sites/",
+    "tmp/",
+    "views/",
+    ".gitignore",
+    "bower.json",
   	"config.json",
-	  "/sites",
-  	"/tmp",
-    "/views"
-  	"bower.json",
-  	".gitignore",
-    "minerva-ws.js"
+    "Gruntfile.js",
+    "minerva-ws.js",
+    "package.json"
   ]
 }
