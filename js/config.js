@@ -15,13 +15,13 @@ var ecLiveSearchConfig = {
   }
 },
  "minerva" :{
-  "name": "LiveSearch",
+  "name": "Minerva",
   "ns": {
     "js": "ecLiveSearch",
     "css": "ec-livesearch",
     "folder": "ec-livesearch"
   },
-  "description": "Provide a live search input field",
+  "description": "Set of tools used by The Economist Front End Team",
   "version": "0.1.0",
   "debugMode": true,
   "private": true,
@@ -30,8 +30,14 @@ var ecLiveSearchConfig = {
     "name": "Umberto Babini",
     "email" : "umbertobabini@economist.com"
   },
-  "dependencies": {
+  "devDependencies": {
+    "bower": "~1.2.7",
+    "express": "^4.10.6",
+    "express-handlebars": "^1.1.0",
+    "express-logger": "0.0.3",
+    "grunt": "~0.4.1",
     "grunt-browser-sync": "^1.5.3",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jasmine": "0.5.1",
     "grunt-contrib-jshint": "0.6.4",
@@ -39,10 +45,13 @@ var ecLiveSearchConfig = {
     "grunt-contrib-watch": "^0.6.1",
     "grunt-githooks": "~0.2.0",
     "grunt-handlebars-compiler": "0.0.7",
+    "grunt-ngmin": "0.0.3",
     "grunt-sass": "0.6.0",
     "grunt-shell": "~0.5.0",
     "grunt-usemin": "~0.1.12",
-    "grunt-criticalcss": "^0.5.0"   
+    "url": "^0.10.1",
+    "yeoman-generator": "^0.18.4",
+    "grunt-criticalcss": "^0.5.0" 
   },
   "engines": {
     "node": ">=0.8.0"

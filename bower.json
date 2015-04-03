@@ -1,7 +1,7 @@
 {
-  "name": "livesearch",
+  "name": "mnv-cmp-livesearch",
   "version": "0.1.0",
-  "homepage": "https://github.com/umbobabo/mnv-livesearch",
+  "homepage": "https://github.com/umbobabo/mnv-cmp-livesearch",
   "authors": [
     "Umberto Babini <umbertobabini@economist.com>"
   ],
@@ -21,8 +21,11 @@
   	"Gruntfile.js",
   	"package.json",
   	"config.json",
-	"/sites",
+	  "/sites",
   	"/tmp",
-  	"bower.json"
+    "/views"
+  	"bower.json",
+  	".gitignore",
+    "minerva-ws.js"
   ]
 }
