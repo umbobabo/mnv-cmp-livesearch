@@ -8,8 +8,8 @@
   "description": "Provide a pure JS livesearch field",
   "main": [
   	"./dist/css/style.css",
-  	"./dist/js/livesearch.min.js",
-  	".dist/js/livesearch.js"
+  	"./dist/js/mnv-cmp-livesearch.min.js",
+  	".dist/js/mnv-cmp-livesearch.js"
   ],
   "license": "MIT",
   "ignore": [
