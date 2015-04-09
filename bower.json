@@ -13,7 +13,6 @@
   ],
   "license": "MIT",
   "ignore": [
-    "css/",
     "data/",
     "js/",
     "minerva-ws/",
