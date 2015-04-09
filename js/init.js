@@ -1,5 +1,5 @@
 function ecLiveSearch(config){
-  var widget, inputField, resultsList, widgetClassName = "mnv-ec-livesearch", search, trigger, hideResults, bindEvents, container, hideOnLeave, log, list, searchProperty, prefix, timer, hideTimer, close;
+  var widget, inputField, resultsList, widgetClassName = "mnv-ec-livesearch", search, trigger, hideResults, bindEvents, container, hideOnLeave, log, list, searchProperty, prefix, timer, hideTimer, reset;
   prefix = widgetClassName + "-";
   this.init = function(config){
     if(config.list instanceof Array === false) {
@@ -23,6 +23,9 @@ function ecLiveSearch(config){
       log('Unable to find a widget with class ' + widgetClassName);
       return false;
     }
+    if(config.caseInsensitive === undefined){
+      config.caseInsensitive = true;
+    }
     container = container[0];
     list = config.list;
     searchProperty = config.searchProperty;
@@ -30,13 +33,14 @@ function ecLiveSearch(config){
     inputField = document.createElement('input');
     inputField.className = prefix + "input";
     inputField.setAttribute('placeholder', config.placeholder );
-    close = document.createElement('button');
-    close.innerText = 'X';
+    reset = document.createElement('button');
+    reset.className = prefix + "reset search";
+    reset.innerText = '';
     resultsList = document.createElement('ul');
     resultsList.className = prefix + "list";
     resultsList.style.display = 'block';
     container.appendChild(inputField);
-    container.appendChild(close);
+    container.appendChild(reset);
     container.appendChild(resultsList);
     bindEvents();
   };
@@ -49,8 +53,9 @@ function ecLiveSearch(config){
     if(str.trim()===""){
       results = [];
     } else {
+      var re = new RegExp(str, (config.caseInsensitive) ? 'i' : null );
       results = list.filter(function(value){
-        return (value[searchProperty].indexOf(str) >= 0) ? true : false;
+        return value[searchProperty].match(re);
       });
     }
     if(results.length===0){
@@ -90,22 +95,37 @@ function ecLiveSearch(config){
 
   hideResults = function(resetInput){
     if(resetInput===true){
-      inputField.value = '';
+      resetForm();
     }
     resultsList.innerHTML = "";
     resultsList.style.display = 'none';
   }
 
+  hasClass = function(el, className){
+    if (el.classList)
+        return el.classList.contains(className);
+      else
+        return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+  }
+
+  resetForm = function(){
+    inputField.value = '';
+    reset.className = prefix + "reset search";
+  }
+
   bindEvents = function(){
     inputField.addEventListener('keyup', function(){
       var str =  this.value.trim();
+      if(hasClass(reset, 'search')){
+        reset.className = prefix + "reset close";
+      }
       clearTimeout(timer);
       timer = window.setTimeout(function() {
         search(str);
       }, 500);
     });
     inputField.addEventListener('focus', function(){
-      inputField.value = '';
+      resetForm();
     });
     if(hideOnLeave){
       resultsList.addEventListener('mouseleave', function(){
@@ -115,8 +135,8 @@ function ecLiveSearch(config){
         }, 1000);
       });
     }
-    close.addEventListener('click', function(){
-      hideResults(true)
+    reset.addEventListener('click', function(){
+      hideResults(true);
     });
   };
 

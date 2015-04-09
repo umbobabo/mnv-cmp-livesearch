@@ -7,26 +7,29 @@
   ],
   "description": "Provide a pure JS livesearch field",
   "main": [
-  	"./dist/css/style.css",
-  	"./dist/js/mnv-cmp-livesearch.min.js",
-  	".dist/js/mnv-cmp-livesearch.js"
+    "./dist/css/style.css",
+    "./dist/js/mnv-cmp-livesearch.min.js",
+    ".dist/js/mnv-cmp-livesearch.js"
   ],
   "license": "MIT",
   "ignore": [
-  	"css/",
-  	"data/",
-  	"js/",
+    "css/",
+    "data/",
+    "js/",
     "minerva-ws/",
-  	"node_modules/",
-  	"partials/",
+    "node_modules/",
+    "partials/",
     "sites/",
     "tmp/",
     "views/",
     ".gitignore",
     "bower.json",
-  	"config.json",
+    "config.json",
     "Gruntfile.js",
     "minerva-ws.js",
     "package.json"
-  ]
+  ],
+  "dependencies": {
+    "mnv-shared": "*"
+  }
 }

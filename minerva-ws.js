@@ -5,7 +5,7 @@ hbs =  exphbs.create({
     defaultLayout: 'development'
 });
 app.engine('handlebars', hbs.engine);
-hbs.partialsDir = ['views/partials/', 'partials/']; 
+hbs.partialsDir = ['views/partials/', 'partials/'];
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
@@ -23,20 +23,20 @@ app.get(/testinitmin.html/gi, function (req, res) {
 app.use(express.static(__dirname));
 
 function listenOnFreePort(){
-  app.listen(port, function() { 
+  app.listen(port, function() {
     console.log('Port ' + port + ' is available.');
     // Automatically run Grunt
     grunt.tasks(['default']);
   })
-  .on('error', 
+  .on('error',
     function(err) {
-      if (err.errno === 'EADDRINUSE') { 
+      if (err.errno === 'EADDRINUSE') {
         var oldport = port;
         port++;
         console.log('Port ' + oldport + ' seems to be in use, I will try port ' + port );
         listenOnFreePort();
-      } else { 
-        console.log(err); 
+      } else {
+        console.log(err);
       }
   });
 }

@@ -11,11 +11,11 @@ function ready(fn) {
 ready(function(){
   var searchableArray , config, liveSearchCmp;
   // Injecting initial data
-  searchableArray = [{ label: 'First', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" },  { label: 'Another second', value: 1, color: "#FFCCE5" }, { label: 'Third', value: 4, color: "#8a89a6"}, { label: 'Fourth', value: 1, color: "#6b486b"}];
+  searchableArray = [{ label: 'First', value: 1, color: "#FFCCE5" }, { label: 'Second very long label with lot of text', value: 1, color: "#FFCCE5" }, { label: 'Second ver', value: 1, color: "#FFCCE5" },  { label: 'Second', value: 1, color: "#FFCCE5" },  { label: 'Second', value: 1, color: "#FFCCE5" },  { label: 'Second', value: 1, color: "#FFCCE5" },  { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" },  { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" }, { label: 'Second', value: 1, color: "#FFCCE5" },{ label: 'Second', value: 1, color: "#FFCCE5" },{ label: 'Another second', value: 1, color: "#FFCCE5" }, { label: 'Third', value: 4, color: "#8a89a6"}, { label: 'Fourth', value: 1, color: "#6b486b"}];
   config = {
     list: searchableArray,
     searchProperty: "label",
-    hideOnLeave: true,
+    hideOnLeave: false,
     placeholder: "Search..."
   };
   // Create the liveSearch obj
@@ -26,24 +26,5 @@ ready(function(){
   });
 });
 
-<!--
-// Config here your script budget or leave the default configuration
--->
-var budgetScriptConfig = {
-// list of the built-in metrics http://lafikl.github.io/perfBar/#list 
-  budget: {
-    // the key is the metric id
-    'loadTime': {
-      max: 200
-    },
-    'redirectCount': {
-      max: 1
-    },
-    'globalJS': {
-      min: 2,
-      max: 5
-    }
-  }
-};
 </script>
 
