@@ -76,15 +76,24 @@ function ecLiveSearch(config){
   };
 
   trigger = function(ev, data){
-    if (window.CustomEvent) {
-      var event = new CustomEvent(ev, {
-        detail: data
-      });
-    } else {
-      var event = document.createEvent('CustomEvent');
-      event.initCustomEvent(ev, true, true, data);
+    function noCustomEvent(ev, data){
+      var myEvent = document.createEvent('CustomEvent');
+      myEvent.initCustomEvent(ev, true, true, data);
+      return myEvent;
     }
-    this.dispatchEvent(event);
+    if (window.CustomEvent) {
+      try {
+        var myEvent = new CustomEvent(ev, {
+          detail: data
+        });
+      }
+      catch (e){
+        var myEvent = noCustomEvent(ev, data);
+      }
+    } else {
+      var myEvent = noCustomEvent(ev, data);
+    }
+    this.dispatchEvent(myEvent);
   }
 
   log = function(txt){
