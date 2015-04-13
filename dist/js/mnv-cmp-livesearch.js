@@ -136,7 +136,12 @@ function ecLiveSearch(config){
       });
     }
     reset.addEventListener('click', function(){
-      hideResults(true);
+      if(hasClass(this, "search")){
+        // Focuse on magnifier click
+        inputField.focus();
+      } else {
+        hideResults(true);
+      }
     });
   };
 
