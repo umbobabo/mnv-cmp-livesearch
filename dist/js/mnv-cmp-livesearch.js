@@ -93,6 +93,7 @@ function ecLiveSearch(config){
     } else {
       var myEvent = noCustomEvent(ev, data);
     }
+    log('triggered: ' + ev + ' with data : ' + data);
     this.dispatchEvent(myEvent);
   }
 
@@ -120,6 +121,7 @@ function ecLiveSearch(config){
   resetForm = function(){
     inputField.value = '';
     reset.className = prefix + "reset search";
+    trigger.call(container, 'fieldReset');
   }
 
   bindEvents = function(){
