@@ -1,15 +1,16 @@
 function ecLiveSearch(config){
-  var widget, inputField, resultsList, widgetClassName = "mnv-ec-livesearch", search, trigger, hideResults, bindEvents, container, hideOnLeave, log, list, searchProperty, prefix, timer, hideTimer, reset;
+  'use strict';
+  var widget, inputField, resultsList, widgetClassName = "mnv-ec-livesearch", search, trigger, hideResults, bindEvents, container, hideOnLeave, log, list, searchProperty, prefix, timer, hideTimer, reset, hasClass, resetForm;
   prefix = widgetClassName + "-";
-  this.init = function(config){
+  this.init = function(config) {
     if(config.list instanceof Array === false) {
       log("list should be an array");
       return false;
-    };
+    }
     if(config.list.length === 0) {
       log("list shouldn't be empty");
       return false;
-    };
+    }
     if(config.searchProperty === undefined) {
       log("Provide a searchProperty");
       return false;
@@ -76,6 +77,7 @@ function ecLiveSearch(config){
   };
 
   trigger = function(ev, data){
+    var myEvent;
     function noCustomEvent(ev, data){
       var myEvent = document.createEvent('CustomEvent');
       myEvent.initCustomEvent(ev, true, true, data);
@@ -83,19 +85,19 @@ function ecLiveSearch(config){
     }
     if (window.CustomEvent) {
       try {
-        var myEvent = new CustomEvent(ev, {
+        myEvent = new CustomEvent(ev, {
           detail: data
         });
       }
       catch (e){
-        var myEvent = noCustomEvent(ev, data);
+        myEvent = noCustomEvent(ev, data);
       }
     } else {
-      var myEvent = noCustomEvent(ev, data);
+      myEvent = noCustomEvent(ev, data);
     }
     log('triggered: ' + ev + ' with data : ' + data);
     this.dispatchEvent(myEvent);
-  }
+  };
 
   log = function(txt){
     if(window.console && window.console.log){
@@ -109,20 +111,17 @@ function ecLiveSearch(config){
     }
     resultsList.innerHTML = "";
     resultsList.style.display = 'none';
-  }
+  };
 
   hasClass = function(el, className){
-    if (el.classList)
-        return el.classList.contains(className);
-      else
-        return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
-  }
+    return (el.classList) ? el.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+  };
 
   resetForm = function(){
     inputField.value = '';
     reset.className = prefix + "reset search";
     trigger.call(container, 'fieldReset');
-  }
+  };
 
   bindEvents = function(){
     inputField.addEventListener('keyup', function(){
