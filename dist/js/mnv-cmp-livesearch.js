@@ -51,10 +51,16 @@ function ecLiveSearch(config){
     log('Starting search');
     resultsList.style.display = 'block';
     resultsList.innerHTML = '';
+    var ar = str.split(" ");
+    var reg = '';
+    ar.map(function(val){
+      reg += '(?=.*' + val + ')';
+    });
     if(str.trim()===""){
       results = [];
     } else {
-      var re = new RegExp(str, (config.caseInsensitive) ? 'i' : null );
+
+      var re = new RegExp(reg, (config.caseInsensitive) ? 'i' : null );
       results = list.filter(function(value){
         return value[searchProperty].match(re);
       });
