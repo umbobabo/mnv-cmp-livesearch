@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   var fs = require('fs');
   // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    name: grunt.file.readJSON('bower.json').name,
     useminPrepare: {
       html: 'partials/widgethead.handlebars'
     },
@@ -34,8 +34,8 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['js/css.js', 'dist/js/mnv-cmp-livesearch.min.js'],
-        dest: 'dist/js/mnv-cmp-livesearch.min.js',
+        src: ['js/css.js', 'dist/js/<%= name %>.min.js'],
+        dest: 'dist/js/<%= name %>.min.js',
       }
     },
     uglify: {
@@ -126,7 +126,7 @@ module.exports = function(grunt) {
       }
     },
     jasmine: {
-      src: ['js/*.js', '../../js/*.js', '!dist/js/mnv-cmp-livesearch.min.js'],
+      src: ['js/*.js', '../../js/*.js', '!dist/js/<%= name %>.min.js'],
       options: {
         specs: ['js/tests/*tests.js', '../../js/tests/*tests.js'],
         vendor: ['https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js']
@@ -136,10 +136,10 @@ module.exports = function(grunt) {
       target: ['css/style.css', 'js/css.js']
     },
     robFix: {
-      target: ['dist/js/mnv-cmp-livesearch.min.js']
+      target: ['dist/js/<%= name %>.min.js']
     },
     CopyInit: {
-      target: ['js/init.js', 'dist/js/mnv-cmp-livesearch.js']
+      target: ['js/init.js', 'dist/js/<%= name %>.js']
     }
   });
 
