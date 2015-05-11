@@ -13,13 +13,10 @@
   ],
   "license": "MIT",
   "ignore": [
-    "data/",
     "js/",
     "minerva-ws/",
     "node_modules/",
     "partials/",
-    "sites/",
-    "tmp/",
     "views/",
     ".gitignore",
     "bower.json",
